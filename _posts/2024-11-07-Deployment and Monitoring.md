@@ -2,7 +2,7 @@
 layout: post
 title: Deployment and Monitoring
 subtitle: Deployment and Monitoring
-categories: "SE Study"
+categories: "SE_Study"
 tags: [Server]
 ---
 
