@@ -1,68 +1,48 @@
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Lora:400,700' rel='stylesheet' type='text/css'>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,minimum-scale=1">
-  <link rel="shortcut icon" href="{{ site.url }}{{ site.baseurl }}{{ site.favicon }}" type="image/png" />
+{% seo %}
 
-  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+{% feed_meta %}
 
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+{% if jekyll.environment == 'production' and site.google_analytics %}
+  {% include google-analytics.html %}
+{% endif %}
 
-  <meta property="og:site_name" content="{{ site.title }}" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="{% if title %}{{ title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
-  <meta property="og:description" content="{% if excerpt %}{{ excerpt }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
-  <meta property="og:url" content="{{ site.url }}{% if site.baseurl %}{{ site.baseurl }}{% endif %}{{ page.url | remove: '/' }}" />
-  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{% if page.cover %}{{ page.cover }}{% else %}{{ site.cover }}{% endif %}" />
-  <meta property="article:publisher" content="https://www.facebook.com/{{ site.facebook }}" />{% if excerpt %}
-  <meta property="article:author" content="https://www.facebook.com/{{ site.facebook }}" />
-  <meta property="article:published_time" content="{% if page.date %}{{ page.date | date_to_xmlschema }}{% elsif post.date %}{{ post.date | date_to_xmlschema }}{% endif %}" />
-  <meta property="article:modified_time" content="{% if page.date %}{{ page.date | date_to_xmlschema }}{% elsif post.date %}{{ post.date | date_to_xmlschema }}{% endif %}" />{% endif %}{% if page.tags.size > 0 %}
-  <meta property="article:tag" content="{{ page.tags | first | capitalizeall }}" />{% endif %}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{% if title %}{{ title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
-  <meta name="twitter:description" content="{% if excerpt %}{{ excerpt }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
-  <meta name="twitter:url" content="{{ site.url }}{{ site.baseurl }}" />
-  <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{% if page.cover %}{{ page.cover }}{% else %}{{ site.cover }}{% endif %}" />
-  <meta name="twitter:label1" content="Written by" />
-  <meta name="twitter:data1" content="{{ site.title }}" />{% if page.tags.size > 0 %}
-  <meta name="twitter:label2" content="Filed under" />
-  <meta name="twitter:data2" content="{{ page.tags | first | capitalizeall }}" />{% endif %}
-  <meta name="twitter:site" content="@{{ site.twitter }}" />
-  <meta name="twitter:creator" content="@{{ site.twitter }}" />{% if excerpt %}
-  <meta property="og:image:width" content="1400" />
-  <meta property="og:image:height" content="933" />{% else %}
-  <meta property="og:image:width" content="2000" />
-  <meta property="og:image:height" content="666" />{% endif %}
+{% if page.math %}
+  {% include mathjax.html %}
+{% endif %}
 
-  <link rel="canonical" href="{{ site.url }}{% if site.baseurl %}{{ site.baseurl }}{% endif %}{{ page.url | remove: '/' }}" />
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans|Roboto|Roboto%20Slab|Inconsolata|Dancing%20Script|Noto%20Sans%20SC|Noto%20Sans%20TC|Noto%20Serif%20SC|Noto%20Serif%20TC|Ma%20Shan%20Zheng">
 
-  <script type="application/ld+json">
-  {% include metadata.json %}
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/skin.css' | relative_url }}">
+
+<!-- Begin selecting skin -->
+{% unless site.skin %}
+  <script>
+    const hour = (new Date()).getHours();
+    let filename = "";
+    if (hour >= 5 && hour < 7) {
+      filename = "{{ '/assets/css/skin-sunrise.css' | relative_url }}";
+    } else if (hour >= 7 && hour < 17) {
+      filename = "{{ '/assets/css/skin-daylight.css' | relative_url }}";
+    } else if (hour >= 17 && hour < 19) {
+      filename = "{{ '/assets/css/skin-sunset.css' | relative_url }}";
+    } else {
+      filename = "{{ '/assets/css/skin-midnight.css' | relative_url }}";
+    }
+    const elem = document.createElement("link");
+    elem.setAttribute("rel", "stylesheet");
+    elem.setAttribute("type", "text/css");
+    elem.setAttribute("href", filename);
+    document.getElementsByTagName("head")[0].appendChild(elem);
   </script>
+{% endunless %}
+<!-- End selecting skin -->
 
-  <style amp-custom>
-  {% capture include_to_scssify %}
-    {% include styles.scss %}
-  {% endcapture %}
-  {{ include_to_scssify | scssify | replace: "@charset "UTF-8";", "" }}
-  </style>
+<script async src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
 
-
-
-  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-  <script async src="https://cdn.ampproject.org/v0.js"></script>
-  <script custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js" async=""></script>
-  <script custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js" async=""></script>
-  <script custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js" async=""></script>
-  <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
-  <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
-  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
-  <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
-  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
-  <script async custom-element="amp-audio" src="https://cdn.ampproject.org/v0/amp-audio-0.1.js"></script>
-    
-</head>
+{% include custom-head.html %}

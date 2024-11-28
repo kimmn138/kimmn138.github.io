@@ -1,176 +1,189 @@
-# HANUMAN Jekyll Theme
+# Hamilton <!-- omit in toc -->
 
-[![Build Status](https://travis-ci.org/samanyougarg/hanuman.svg?branch=master)](https://travis-ci.org/samanyougarg/hanuman)
+A minimal and beautiful Jekyll theme best for writing and note-taking.
 
-Hanuman is a minimal yet powerful Jekyll theme for your blogs and websites.
+The original purpose of this theme is to be a replacement of the default Jekyll theme -- [Minima](https://github.com/jekyll/minima). Hamilton is an enhancement of Minima but still, keep in minimal.
 
-It is built using the open source [AMP Start framework](https://www.ampstart.com/) and can be customized as per your requirements.
+Please check out the [demo](https://ngzhio.github.io/jekyll-theme-hamilton/).
 
-<a href="https://www.buymeacoffee.com/samanyougarg"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" target="_blank"></a>
+| Skins | Displays |
+| ----- | -------- |
+| Daylight | ![screenshot](screenshot.png) |
+| Sunrise/Sunset | ![screenshot](screenshot-sunrise.png) |
+| Midnight | ![screenshot](screenshot-midnight.png) |
 
-## Live Demo
-## [Hanuman](https://samanyougarg.com/hanuman)
-![Hanuman](/Screenshots/hanuman.jpg "Hanuman Preview")
+## Features <!-- omit in toc -->
 
+- [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag)
+- [Jekyll Feed](https://github.com/jekyll/jekyll-feed)
+- [Jekyll Sitemap](https://github.com/jekyll/jekyll-sitemap)
+- [Google Analytics](https://analytics.google.com/)
+- [MathJax](https://www.mathjax.org/)
+- [Disqus](https://disqus.com/)
+- [Font Awesome](https://fontawesome.com/)
+- TOC
+- Customizable head
+- Configurable page navigation
+- Customizable styles and skins
+- Archive pages implemented in pure Liquid
 
-## Features
+## Table of Contents <!-- omit in toc -->
 
-- Minimal
-- Responsive
-- Syntax Highlighting for code
-- Cover Images for homepage and blog posts
-- Social Sharing
-- Simple Navigation Menu
-- Pagination
-- Google Analytics
-- Can be easily installed via "theme gem"
-- Github Pages support
-- Easily Customisable
-- Tags
-- Multiple Authors
-
-## What is AMP
-
-AMP stands for [Accelerated Mobile Pages](https://www.ampproject.org/), a Google-backed project designed as an open standard for any publisher to have pages load quickly on mobile devices.
+- [Installation](#installation)
+- [Configuration](#configuration)
+  - [Optional Parameters](#optional-parameters)
+- [Archive Pages](#archive-pages)
+- [MathJax](#mathjax)
+- [TOC](#toc)
+- [Customization](#customization)
+  - [Metadata](#metadata)
+  - [Navigation](#navigation)
+  - [Social Media](#social-media)
+  - [Skins](#skins)
+  - [More Customized Styles](#more-customized-styles)
+- [License](#license)
 
 ## Installation
 
-There are different ways to install the theme -
+You can choose one of the following methods to install Hamilton:
 
-### 1. Cloning the repository and updating settings
-1. Fork this repository and clone the forked repository.
-2. Update the _config.yml file as per your requirements.
-3. Add your posts to the _posts directory.
-4. Deploy to Github Pages or your own server.
+- Directly specify the `jekyll-theme-hamilton` gem.
 
-#### Deploying to Github Pages
-**Method 1**
+    1. Add `gem 'jekyll-theme-hamilton'` into your `Gemfile`.
+    2. Add the below lines into your `_config.yml`.
 
-Push the contents of the destination folder (mentioned in _config.yml. eg - destination: ../hanuman-pages/) to the gh-pages branch(if project page) or master branch(if user page) of your repository.
+        ```yml
+        plugins:
+          - jekyll-theme-hamilton
+        ```
 
-**Method 2**
+- If your site is hosted on GitHub Pages, you can use [`jekyll-remote-theme`](https://github.com/benbalter/jekyll-remote-theme) to import the master branch of Hamilton.
 
-- Set up travis-ci for your fork.
-- Generate your secure token with the travis gem:
-  Run `gem install travis` on your terminal.
-- Grab the GH_TOKEN from https://github.com/settings/tokens
-- Then run `travis encrypt 'GIT_NAME="YOUR_USERNAME" GIT_EMAIL="YOUR_EMAIL" GH_TOKEN=YOUR_TOKEN'`
-- Add the token to your .travis.yml file.
-Now you just need to push the files. Travis will generate the HTML files and automatically push them to your gh-pages branch.
-This is the setup I am using.
+    1. Add `gem 'jekyll-remote-theme'` into your `Gemfile`.
+    2. Add the below lines into your `_config.yml`.
 
-### 2. Ruby Gem Method
-Add this line to your Jekyll site's `Gemfile`:
+        ```yml
+        plugins:
+          - jekyll-remote-theme
 
-```ruby
-gem "hanuman"
+        remote_theme: ngzhio/jekyll-theme-hamilton
+        ```
+
+## Configuration
+
+After installation, you can run `jekyll serve` to check out your site, but before that, *make sure* the below **required parameters** are configured in your `_config.yml`.
+
+| Parameters | Types | Specifications |
+|:---------- |:----- |:-------------- |
+| `title`    | string | The site title |
+| `disqus`   | string | The Disqus shortname; Unless you don't want to enable the comments system, you must specify this parameter. It is used in the production environment. |
+| `google_analytics` | string | The Google Analytics tracking ID; It is used in the production environment. |
+
+### Optional Parameters
+
+| Parameters | Types | Specifications |
+|:---------- |:----- |:-------------- |
+| `author`   | string | The name of the author of the site; It would be showed in the copyright statement. |
+| `avatar`   | string | The avatar of the author of the site. |
+| `email`    | string | The email of the author of the site. |
+| `location` | string | The current living location of the author of the site. |
+| `skin`     | string | The skin name. See more information on the [Customization](#customization) section. |
+| `lang`     | string | The language of the site; The default value is `en`. |
+| `paginate` | int    | The number of posts on each page. |
+| `date_format` | string | The date format; The default value is `%b %-d, %Y`. |
+| `subscribe` | boolean | Show the subsribe feed button. |
+
+## Archive Pages
+
+Hamilton implements some archive templates in pure Liquid. For example, if you want to create a category archive page, set the below parameters on that page:
+
+```yml
+---
+layout: archive-taxonomies
+type: categories
+---
 ```
 
-And add this line to your Jekyll site's `_config.yml`:
+Or a tag archive page:
 
-```yaml
-theme: hanuman
+```yml
+layout: archive-taxonomies
+type: tags
 ```
 
-And then execute:
+Or archive by years:
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install hanuman
-
-You'll also need to copy or create the _config.yml file just like in this repository. Similarly, you'll need to have a navigation.yml and author.yml in your _data directory.
-
-#### Deploying to Github Pages
-Run `bundle exec jekyll serve` inside your cloned repository. Push the contents of the resulting _site to your Github Pages repository.
-
-
-### 3. Jekyll Remote Theme
-1. Create or update your Gemfile with the following -
-
-```ruby
-source "https://rubygems.org"
-gem "github-pages", group: :jekyll_plugins
-gem "jekyll-remote-theme"
+```yml
+layout: archive-years
 ```
 
-2. Update the bundled gems using `bundle` command.
+## MathJax
 
-3. Add `remote_theme: "hanuman"` to your `_config.yml`.
+You can enable MathJax on each post or page, just set `math: true` on that page.
 
-4. Add `jekyll-remote-theme` to the plugins array of your `_config.yml` -
+## TOC
 
-```yaml
-plugins:
-  - jekyll-remote-theme
+If you want to show the Table of Contents of a post or page on the left sidebar, just set `toc: true` on that page.
+
+## Customization
+
+### Metadata
+
+You can create a file `_includes/custom-head.html` in your repository, and add any metadata into that page, e.g. favicons.
+
+### Navigation
+
+You can create a file `_data/navigation.yml` to configure links to some pages. For example,
+
+```yml
+- title: About
+  url: /about/
+- title: Categories
+  url: /categories/
+- title: Tags
+  url: /tags/
 ```
 
-## Usage
+The navigation bar also supports dropdown submenus:
 
-### _config.yml
-Update _config.yml with your respective settings like updating your site's name, description etc...
+```yml
+- title: About
+  url: /about/
+- title: Categories
+  url: /categories/
+- title: Tags
+  url: /tags/
+- title: More
+  sublinks:
+    - title: FAQ
+      url: /faq/
+    - title: Docs
+      url: /docs/
+```
 
-### Styling
-AMP has a limitation that you can only use inline css.
-All the CSS for this theme is in the styles.scss file in the includes directory.
+### Social Media
 
-#### Changing the Default Color
-In the styles.scss file in the includes directory, you can change the hex value of $theme-color to the color you would like your site to use.
+You can create a file `_data/social.yml` to configure links to your social media. For example,
 
-### Author Information
-Author information is present in the author.yml file in the _data folder. You can update the fields of that file as per your requirements.
+```yml
+- title: Twitter
+  url: https://twitter.com/ngzhio
+  icon: fab fa-twitter
+- title: GitHub
+  url: https://github.com/ngzhio/jekyll-theme-hamilton
+  icon: fab fa-github
+```
 
-### Sidenav
-Sidenav can be updated from the navigation.yml file in the _data folder.
+### Skins
 
-## Writing Posts
-You can write posts just as you would in Jekyll, the only difference being that AMP has some strict guidelines on including external content.
+You can select a skin by setting `skin` in `_config.yml`. The built-in skins include `daylight`, `midnight`, `sunrise`, and `sunset`. If you don't specify any skin, Hamilton would dynamically select one in these built-in skins according to different hours in a day.
 
-You cannot use Markdown format or normal HTML tags. AMP provides its own custom tags for images, videos etc...
+You can also customize a new skin, for example, a skin called `solarized`. You need to copy [`_sass/hamilton/skins/daylight.scss`](_sass/hamilton/skins/daylight.scss) into your repository and then rename it to `solarized.scss`, and adjust some colors in that file. Finally, specify `skin: solarized` in `_config.yml`.
 
-### Examples -
+### More Customized Styles
 
-**Images**
-`<amp-img src="welcome.jpg" alt="Welcome" height="400" width="800"></amp-img>`
-
-**Videos**
-`<amp-youtube data-videoid="mGENRKrdoGY" layout="responsive" width="480" height="270"></amp-youtube>`
-
-[See Full AMP Documentation.](https://www.ampproject.org/docs/)
-
-### Using AMP Components
-Some AMP components require you to specify external scripts before using them.
-You can specify these scripts in the head.html file in the includes directory after the already imported scripts and then use these components in any post.
-
-## Validating your page with AMP
-AMP provides built-in validator to validate your pages so that they can rendered quickly.
-
-You can access this validator by opening the Developer Console in your browser and adding #development=1 to any url of your site.
-
-Example -
-http://localhost:4000/#development=1
-
-If you have errors on your page, AMP will list those for you in the console. If you do not have any errors, you'll get a message "AMP Validation Successful" on your console.
-
-## Enabling Google Analytics
-1. Set up your Analytics Tracking ID in _config.yml.
-2. Remove {% comment %} and {% endcomment %} tags in the default.html file in layouts directory.
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/samanyougarg/hanuman. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-To submit a pull request -
-
-1. Fork/clone the repository.
-2. Develop.
-3. Create a new branch from the master branch.
-4. Open a pull request on Github describing what was fixed or added.
-
-## Thanks
-Hanuman is based on [amplify](https://github.com/ageitgey/amplify) jekyll theme. Thank You.
+If you want to create more CSS styles in your site, creating a file `_sass/hamilton/custom-styles.scss`, and putting your code in there, Hamilton would automatically refer to them.
 
 ## License
 
-The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The theme is available as open source under the terms of the [MIT License](LICENSE.txt).
