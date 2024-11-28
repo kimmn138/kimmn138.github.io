@@ -1,3 +1,11 @@
+---
+layout: post
+title: Deployment and Monitoring
+subtitle: Deployment and Monitoring
+categories: "SE Study"
+tags: [Server]
+---
+
 # Deployment and Monitoring
 
 작성일시: 2024년 11월 7일 오후 8:10
