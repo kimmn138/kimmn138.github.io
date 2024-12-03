@@ -6,11 +6,11 @@ categories: "SE_Study"
 tags: [Server]
 ---
 
-# Deployment and Monitoring
-
-작성일시: 2024년 11월 7일 오후 8:10
-자료: https://docs.delinea.com/online-help/server-suite/install/deployment/overview/index.htm, https://www.splunk.com/en_us/blog/learn/server-monitoring.html
-유형: 서버 스터디
+| 제목 | Deployment and Monitoring |
+|--|--|
+| 작성일시 | 2024년 11월 7일 오후 8:10 |
+| 자료 | https://docs.delinea.com/online-help/server-suite/install/deployment/overview/index.htm,<br>https://www.splunk.com/en_us/blog/learn/server-monitoring.html |
+| 유형 | 서버 스터디 |
 
 ### Deployment and Monitoring
 
@@ -22,7 +22,7 @@ tags: [Server]
     - 대상 컴퓨터에 에이전트를 배포한 후에는 추가 컴퓨터에 배포하기 전에 작업을 테스트하고 확인해야 함
     - 대상 컴퓨터에서 배포가 성공적으로 이루어졌는지 확인한 후에는 진행 중인 작업을 세부화, 관리 및 개선할 수 있는 여러 가지 방법이 있음
 
-[Deployment Process Overview | Delinea](https://docs.delinea.com/online-help/server-suite/install/deployment/overview/index.htm)
+[`Deployment Process Overview | Delinea`](https://docs.delinea.com/online-help/server-suite/install/deployment/overview/index.htm)
 
 - Monitoring
     - 서버 모니터링은 물리적이든 가상이든 서버의 활동에 대한 가시성을 확보하는 프로세스
@@ -33,4 +33,4 @@ tags: [Server]
         - 클라우드/SaaS 시스템
         - 모바일 시스템
 
-[What is Server Monitoring? A Beginner's Guide | Splunk](https://www.splunk.com/en_us/blog/learn/server-monitoring.html)
+[`What is Server Monitoring? A Beginner's Guide | Splunk`](https://www.splunk.com/en_us/blog/learn/server-monitoring.html)
