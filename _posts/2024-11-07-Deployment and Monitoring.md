@@ -6,10 +6,10 @@ categories: "SE_Study"
 tags: [Server]
 ---
 
-# Deployment and Monitoring
-
+| 제목 | Deployment and Monitoring |
+|--|--|
 | 작성일시 | 2024년 11월 7일 오후 8:10 |
-| 자료 | https://docs.delinea.com/online-help/server-suite/install/deployment/overview/index.htm, https://www.splunk.com/en_us/blog/learn/server-monitoring.html |
+| 자료 | https://docs.delinea.com/online-help/server-suite/install/deployment/overview/index.htm,<br>https://www.splunk.com/en_us/blog/learn/server-monitoring.html |
 | 유형 | 서버 스터디 |
 
 ### Deployment and Monitoring
